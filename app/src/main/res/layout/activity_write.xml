@@ -184,7 +184,7 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/BetterDay3"
+            android:id="@+id/BetterDayAnswer3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
