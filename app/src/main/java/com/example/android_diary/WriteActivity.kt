@@ -1,9 +1,11 @@
 package com.example.android_diary
 
+import android.app.DatePickerDialog
 import android.database.sqlite.SQLiteDatabase
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -49,6 +51,10 @@ class WriteActivity: AppCompatActivity() {
     val positiveSentenceEditText:EditText by lazy{
         findViewById<EditText>(R.id.positiveSentenceAnswer)
     }
+
+    val dateSelectButton:Button by lazy{
+        findViewById<Button>(R.id.dateSelectButton)
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +64,7 @@ class WriteActivity: AppCompatActivity() {
         database = dbHelper.writableDatabase
 
         initDate()
+        initdateSelectButton()
         initsaveButton()
 
     }
@@ -69,6 +76,29 @@ class WriteActivity: AppCompatActivity() {
         dateMonth.text = splitDate[1]
         dateDay.text = splitDate[2]
 
+    }
+    private fun initdateSelectButton(){
+        dateSelectButton.setOnClickListener{
+            val currentYear = dateYear.text.toString().toInt()
+            val currentMonth = dateMonth.text.toString().toInt()
+            val currnetday = dateDay.text.toString().toInt()
+            val dlg = DatePickerDialog(this, object:DatePickerDialog.OnDateSetListener{
+                override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+                    dateYear.text = year.toString()
+                    dateMonth.text =
+                        when{
+                            month+1<10 -> "0"+(month+1).toString()
+                            else -> (month+1).toString()
+                        }
+                    dateDay.text =
+                        when{
+                            dayOfMonth<10 -> "0"+dayOfMonth.toString()
+                            else -> dayOfMonth.toString()
+                        }
+                }
+            }, currentYear, currentMonth-1, currnetday)
+            dlg.show()
+        }
     }
     private fun initsaveButton(){
         saveButton.setOnClickListener{
