@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.database.sqlite.SQLiteDatabase
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -103,10 +104,13 @@ class WriteActivity: AppCompatActivity() {
     private fun initsaveButton(){
         saveButton.setOnClickListener{
             var date = dateYear.text.toString()+dateMonth.text.toString()+dateDay.text.toString()
-            var query = "INSERT INTO mytable values(${date}," +
+            Log.d("date -----", date)
+            var query = "INSERT INTO mytable (date, thanks1, thanks2, thanks3, betterDay1, betterDay2, betterDay3, positiveSentence)" +
+                    "values(${date}," +
                     " ${thanks1EditText.text.toString()}, ${thanks2EditText.text.toString()}, ${thanks3EditText.text.toString()}," +
                     "${betterDay1EditText.text.toString()}, ${betterDay2EditText.text.toString()}, ${betterDay3EditText.text.toString()}," +
                     "${positiveSentenceEditText.text.toString()});"
+            database.execSQL(query)
             finish()
         }
     }
