@@ -15,13 +15,13 @@ class DBHelper(
     override fun onCreate(db: SQLiteDatabase) {
         var sql : String = "CREATE TABLE if not exists mytable (" +
                 "_id integer primary key autoincrement," +
-                "date text" +
-                "thanks1 text" +
-                "thanks2 text" +
-                "thanks3 text" +
-                "betterDay1 text" +
-                "betterDay2 text" +
-                "betterDay3 text" +
+                "date text," +
+                "thanks1 text," +
+                "thanks2 text," +
+                "thanks3 text," +
+                "betterDay1 text," +
+                "betterDay2 text," +
+                "betterDay3 text," +
                 "positiveSentence text);";
 
         db.execSQL(sql)
