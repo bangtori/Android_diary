@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/contentsDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@id/contentsDateYear"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/contentsDateYear"
+        app:layout_constraintTop_toTopOf="@id/contentsDateYear" />
+
+    <TextView
+        android:id="@+id/contentsDateYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="2022"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/contentsDateText"
+        app:layout_constraintRight_toLeftOf="@id/contentsDateMonth"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contentsDateMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="01"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/contentsDateYear"
+        app:layout_constraintRight_toLeftOf="@id/contentsDateDay"
+        app:layout_constraintTop_toTopOf="@id/contentsDateYear" />
+
+    <TextView
+        android:id="@+id/contentsDateDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="01"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/contentsDateMonth"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/contentsDateYear" />
+    <!--내용-->
+    <LinearLayout
+        android:id="@+id/contentsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/contentsDateText">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="지금 이 순간, 감사하고 싶은 일은?"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/thanksContents1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="1. 감사한 일 1"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/thanksContents2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="2. 감사한 일 2"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/thanksContents3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="3. 감사한 일 3"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="어떻게 하면 더 좋은 하루를 보낼 수 있을까?"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/betterDayContents1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="1. 더 좋은 하루를 보내기 위한 방법 1"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/betterDayContents2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="2. 더 좋은 하루를 보내기 위한 방법 2"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/betterDayContents3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="3. 더 좋은 하루를 보내기 위한 방 3"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나를 위한 긍정의 한 줄은?"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/positiveSentenceContents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="화이팅!!"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/removeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="20dp"
+        android:text="삭제하기"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
