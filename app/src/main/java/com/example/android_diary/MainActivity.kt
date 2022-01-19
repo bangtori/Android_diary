@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     lateinit var dbHelper : DBHelper
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<ListView>(R.id.itemListView)
     }
     var itemList = arrayListOf<ListData>()
-
+    val itemAdapter = CustomAdapter(this, itemList)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         createList()
+
     }
     private fun initAddDiaryButton(){
         addDiaryButton.setOnClickListener{
@@ -44,21 +46,28 @@ class MainActivity : AppCompatActivity() {
     }
     @SuppressLint("Range")
     private fun createList(){
-        val itemAdapter = CustomAdapter(this, itemList)
-
         val sql = "select * from mytable"
         val cursor:Cursor? = database.rawQuery(sql, null)
         if (cursor != null) {
+            itemAdapter.itemList.clear()
             while(cursor.moveToNext()){
                 val id = cursor.getInt(0)
                 val date = cursor.getString(1)
                 val positiveSentence = cursor.getString(8)
-
                 itemAdapter.addItemToList(id, date, positiveSentence)
 
             }
             itemListView.adapter = itemAdapter
+            //클릭 이벤트 처리
+            itemListView.setOnItemClickListener { parent, view, position, id ->
+                var id = view.findViewById<TextView>(R.id.databaseIdValue).text.toString().toInt()
+                val intent = Intent(this, ContentsActivity::class.java)
+                intent.putExtra("id", id)
+                startActivity(intent)
+            }
         }
+
+
 
     }
 }

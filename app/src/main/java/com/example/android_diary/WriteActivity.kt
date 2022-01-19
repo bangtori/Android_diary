@@ -104,7 +104,6 @@ class WriteActivity: AppCompatActivity() {
     private fun initsaveButton(){
         saveButton.setOnClickListener{
             var date = dateYear.text.toString()+dateMonth.text.toString()+dateDay.text.toString()
-            Log.d("date -----", date)
             var query = "INSERT INTO mytable (date, thanks1, thanks2, thanks3, betterDay1, betterDay2, betterDay3, positiveSentence)" +
                     "values(${date}," +
                     " ${thanks1EditText.text.toString()}, ${thanks2EditText.text.toString()}, ${thanks3EditText.text.toString()}," +
