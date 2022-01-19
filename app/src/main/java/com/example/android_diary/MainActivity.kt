@@ -50,10 +50,12 @@ class MainActivity : AppCompatActivity() {
         val cursor:Cursor? = database.rawQuery(sql, null)
         if (cursor != null) {
             while(cursor.moveToNext()){
+                val id = cursor.getInt(0)
                 val date = cursor.getString(1)
                 val positiveSentence = cursor.getString(8)
 
-                itemAdapter.addItemToList(date, positiveSentence)
+                itemAdapter.addItemToList(id, date, positiveSentence)
+
             }
             itemListView.adapter = itemAdapter
         }

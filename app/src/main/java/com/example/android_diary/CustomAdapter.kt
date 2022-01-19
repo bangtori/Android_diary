@@ -1,6 +1,7 @@
 package com.example.android_diary
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,18 +29,21 @@ class CustomAdapter(val context: Context, val itemList:ArrayList<ListData>): Bas
         var view= LayoutInflater.from(context).inflate(R.layout.list_item_view, null)
         val dateView = view.findViewById<TextView>(R.id.dateTextView)
         val subTitleView = view.findViewById<TextView>(R.id.subtitleTextView)
+        val idValue = view.findViewById<TextView>(R.id.databaseIdValue)
 
         val item = itemList[position]
         dateView.text = item.date
         subTitleView.text = item.positiveSentence
+        idValue.text = item.idValue.toString()
 
         return view
     }
-    public fun addItemToList(date : String, positiveSentence:String){
+    public fun addItemToList(id:Int,date : String, positiveSentence:String){
         val listData = ListData()
 
         listData.date = date
         listData.positiveSentence = positiveSentence
+        listData.idValue = id
 
         itemList.add(listData)
     }
