@@ -1,5 +1,6 @@
 package com.example.android_diary
 
+import android.content.DialogInterface
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -60,6 +62,8 @@ class ContentsActivity: AppCompatActivity()  {
         dbHelper = DBHelper(this, "myDiary.db", null, 1)
         database = dbHelper.writableDatabase
 
+        initRemoveButton(id)
+
         val sql = "select * from mytable where _id=${id}"
         val cursor: Cursor?= database.rawQuery(sql, null)
         if(cursor != null && cursor.moveToFirst()) {
@@ -78,6 +82,28 @@ class ContentsActivity: AppCompatActivity()  {
 
             positiveSentence.text = cursor.getString(8)
 
+
+        }
+    }
+    private fun initRemoveButton(id:Int){
+        val eventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE){
+                    val sql = "delete from mytable where _id=${id}"
+                    database.execSQL(sql)
+                    finish()
+                }
+            }
+        }
+        removeButton.setOnClickListener{
+            AlertDialog.Builder(this).run{
+                setTitle("일기 삭제")
+                setIcon(android.R.drawable.ic_dialog_info)
+                setMessage("이 일기를 삭제하시겠습니까?")
+                setPositiveButton("네", eventHandler)
+                setNegativeButton("취소", eventHandler)
+                show()
+            }
 
         }
     }
